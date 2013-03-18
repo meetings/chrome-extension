@@ -29,8 +29,22 @@ function getSelection() {
   return t;
 }
 
-var name = $('h1.name').text();
-var email = $('div.email_address.data_group .value a').first().text();
+for(var pattern in INTEGRATIONS) {
+  if(new RegExp(pattern.replace(/\*/g, "[^ ]*")).exec(document.location.toString())) {
+    console.log(pattern);
+    break;
+  }
+}
+
+if(pattern == "*://*.highrisehq.com/people/*") {
+  var name = $('h1.name').text();
+  var email = $('div.email_address.data_group .value a').first().text();
+  var buttonSelector = 'div.party_header';
+}
+
+if(pattern ==  "*://www.linkedin.com/profile/view*") {
+
+}
 
 var params = {
   title:undefined,
@@ -47,4 +61,5 @@ var params = {
   initial_participants:fill('"{{0}}" <{{1}}>', [name, email])
 };
 
-$('div.party_header').append(fill('<a href="{{0}}" target="_blank" class="meetings-button">Schedule Meeting</a>', [BASE_URL + parametrize(params)]));
+
+$(buttonSelector).append(fill('<a href="{{0}}" target="_blank" class="meetings-button">Schedule Meeting</a>', [BASE_URL + parametrize(params)]));
