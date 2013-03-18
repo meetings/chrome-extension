@@ -1,0 +1,28 @@
+{
+  "name":"Meetin.gs",
+  "version":"1.0",
+  "manifest_version":2,
+  "description":"Meetin.gs is a cloud-based meeting organizer for running awesome business meetings.",
+  "icons":{
+    "16":"icon16.png",
+    "48":"icon48.png",
+    "128":"icon128.png"
+  },
+  "browser_action":{
+    "default_icon":"icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy":"script-src 'self'; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": ["*://*.highrisehq.com/people/*"],
+      "css": ["default.css"],
+      "js": ["jquery.js", "index.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions":[
+    "http://*/",
+    "https://*/"
+  ]
+}
