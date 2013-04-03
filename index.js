@@ -29,37 +29,32 @@ function getSelection() {
   return t;
 }
 
-for(var pattern in INTEGRATIONS) {
-  if(new RegExp(pattern.replace(/\*/g, "[^ ]*")).exec(document.location.toString())) {
-    console.log(pattern);
-    break;
+(function (callback) {
+  for(var pattern in INTEGRATIONS) {
+    if(new RegExp(pattern.replace(/\*/g, "[^ ]*")).exec(document.location.toString())) {
+      return INTEGRATIONS[pattern](callback);
+    }
   }
-}
+})(function(r) {
+  console.log(r);
 
-if(pattern == "*://*.highrisehq.com/people/*") {
-  var name = $('h1.name').text();
-  var email = $('div.email_address.data_group .value a').first().text();
-  var buttonSelector = 'div.party_header';
-}
-
-if(pattern ==  "*://www.linkedin.com/profile/view*") {
-
-}
-
-var params = {
-  title:undefined,
-  location:undefined,
-  initial_agenda:undefined,
-  begin_epoch:undefined,
-  end_epoch:undefined,
-  /*
-  title:"TestTitle",
-  location:"TestLocation",
-  initial_agenda:"Initial Agenda",
-  begin_epoch:1362600000,
-  end_epoch:1362603600,*/
-  initial_participants:fill('"{{0}}" <{{1}}>', [name, email])
-};
+  var params = {
+    title:undefined,
+    location:undefined,
+    initial_agenda:undefined,
+    begin_epoch:undefined,
+    end_epoch:undefined,
+    /*
+     title:"TestTitle",
+     location:"TestLocation",
+     initial_agenda:"Initial Agenda",
+     begin_epoch:1362600000,
+     end_epoch:1362603600,*/
+    initial_participants:fill('"{{0}}" <{{1}}>', [r.name, r.email])
+  };
 
 
-$(buttonSelector).append(fill('<a href="{{0}}" target="_blank" class="meetings-button">Schedule Meeting</a>', [BASE_URL + parametrize(params)]));
+  $(r.selector).append($(fill('<a href="{{0}}" target="_blank" class="meetings-button">Schedule Meeting</a>', [BASE_URL + parametrize(params)])).attr("style", r.style || ""));
+
+});
+

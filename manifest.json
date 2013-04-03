@@ -15,9 +15,9 @@
   "content_security_policy":"script-src 'self'; object-src 'self'",
   "content_scripts": [
     {
-      "matches": ["*://*.highrisehq.com/people/*", "*://www.linkedin.com/profile/view*"],
+      "matches": ["*://*.highrisehq.com/people/*", "*://www.linkedin.com/profile/view*", "*://mail.google.com/mail/u/1/*"],
       "css": ["default.css"],
-      "js": ["jquery.js", "config.js", "index.js"],
+      "js": ["jquery.js", "jquery.livequery.js", "config.js", "index.js"],
       "run_at": "document_end"
     }
   ],
