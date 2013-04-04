@@ -24,34 +24,16 @@ function parametrize(params) {
   }
 })(function (r) {
   console.log(r);
-  var participants = r.contacts/*.filter(function (contact) {
-    return contact.name != 'me';
-  })*/.map(function (contact) {
+  var participants = r.contacts.map(function (contact) {
       return fill('"{{0}}" <{{1}}>', [contact.name, contact.email]);
     }).join(', ');
 
-  console.log(participants);
-
- /* var title = r.title;
-  if(!title) {
-    var names = r.contacts.map(function(contact) {
-      return contact.name;
-    }), last = names.pop();
-    title = "Meeting between " + names.join(', ') + ' & ' + last;
-  }*/
-
   var params = {
-    title:undefined,
-    location:undefined,
-    initial_agenda:undefined,
-    begin_epoch:undefined,
-    end_epoch:undefined,
-    /*
-     title:"TestTitle",
-     location:"TestLocation",
-     initial_agenda:"Initial Agenda",
-     begin_epoch:1362600000,
-     end_epoch:1362603600,*/
+    title:r.title,
+    location:r.location,
+    //initial_agenda:undefined,
+    begin_epoch:r.start ? Math.floor(r.start / 1000) : undefined,
+    end_epoch:r.end ? Math.floor(r.end / 1000) :undefined,
     initial_participants:participants
   };
 
