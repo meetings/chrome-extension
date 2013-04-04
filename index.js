@@ -9,34 +9,36 @@ function fill(string, args) {
 function parametrize(params) {
   var r = [];
   for (var key in params) {
-    if(params[key]) {
+    if (params[key]) {
       r.push(key + '=' + encodeURIComponent(params[key]));
     }
   }
   return r.join('&');
 }
 
-//TODO decide if we want to use this
-function getSelection() {
-  var t = '';
-  if (window.getSelection) {
-    t = window.getSelection();
-  } else if (document.getSelection) {
-    t = document.getSelection();
-  } else if (document.selection) {
-    t = document.selection.createRange().text;
-  }
-  return t;
-}
-
 (function (callback) {
-  for(var pattern in INTEGRATIONS) {
-    if(new RegExp(pattern.replace(/\*/g, "[^ ]*")).exec(document.location.toString())) {
+  for (var pattern in INTEGRATIONS) {
+    if (new RegExp(pattern.replace(/\*/g, "[^ ]*")).exec(document.location.toString())) {
       return INTEGRATIONS[pattern](callback);
     }
   }
-})(function(r) {
+})(function (r) {
   console.log(r);
+  var participants = r.contacts/*.filter(function (contact) {
+    return contact.name != 'me';
+  })*/.map(function (contact) {
+      return fill('"{{0}}" <{{1}}>', [contact.name, contact.email]);
+    }).join(', ');
+
+  console.log(participants);
+
+ /* var title = r.title;
+  if(!title) {
+    var names = r.contacts.map(function(contact) {
+      return contact.name;
+    }), last = names.pop();
+    title = "Meeting between " + names.join(', ') + ' & ' + last;
+  }*/
 
   var params = {
     title:undefined,
@@ -50,7 +52,7 @@ function getSelection() {
      initial_agenda:"Initial Agenda",
      begin_epoch:1362600000,
      end_epoch:1362603600,*/
-    initial_participants:fill('"{{0}}" <{{1}}>', [r.name, r.email])
+    initial_participants:participants
   };
 
 
