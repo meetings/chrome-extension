@@ -1,3 +1,10 @@
+/*
+button base color #7bc8e1, top with 5% white, bottom with 5% black
+horizontal stripe #81b3cb
+hight 35 px
+Can we use Museo Sans font here or does it need to be helvetica?
+*/
+
 .meetings-button {
   -webkit-background-clip: border-box;
   -webkit-background-origin: padding-box;
@@ -59,9 +66,31 @@ a.meetings-button:link, a.meetings-button:visited {
 }
 
 .popup {
-  width: 200px;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+  width: 216px;
+  background-color: #f4f4f4;
+  font-family: Helvetica, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  text-align: right;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+#menu-loggedin img, #menu-loggedout img {
+  padding: 10px;
+  float: left;
+  clear: left;
+}
+
+#menu-loggedin div, #menu-loggedout div {
+  float: left;
+
+}
+
+.logo {
+  width: 100%;
+  background-color: #87c9e1;
+  /* TODO gradient */
+  text-align: center;
+  padding: 10px 20px 0 0;
 }

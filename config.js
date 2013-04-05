@@ -4,7 +4,8 @@ var INTEGRATIONS = {
       contacts:[
         {
           name:$('.full-name').text(),
-          email:$('#email-view li a').first().attr('href').substr('mailto:'.length)        }
+          email:$('#email-view li a').first().attr('href').substr('mailto:'.length)
+        }
       ],
       selector:'div.profile-card',
       style:'margin-top: 0'
