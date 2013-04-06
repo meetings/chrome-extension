@@ -44,21 +44,23 @@ Can we use Museo Sans font here or does it need to be helvetica?
   font-weight: normal;
   height: 17px;
   line-height: normal;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin: 4px;
   outline-color: rgb(255, 255, 255);
   outline-style: none;
   outline-width: 0px;
   padding-bottom: 8px;
-  padding-left: 8px;
+  padding-left: 4px;
   padding-right: 8px;
   padding-top: 8px;
   text-align: center;
   text-decoration: none;
   vertical-align: baseline;
   width: 160px;
+}
+
+.meetings-button img {
+  padding-right: 4px;
+  vertical-align: middle;
 }
 
 a.meetings-button:link, a.meetings-button:visited {
@@ -76,15 +78,37 @@ a.meetings-button:link, a.meetings-button:visited {
   padding: 0;
 }
 
-#menu-loggedin img, #menu-loggedout img {
-  padding: 10px;
-  float: left;
+.menu > div {
   clear: left;
+  height: 40px;
+  border-top: 1px #595959 solid;
 }
 
-#menu-loggedin div, #menu-loggedout div {
+.menu img {
   float: left;
+  padding: 10px;
+}
 
+.menu a {
+  float: left;
+  width: 175px;
+  padding-top: 10px;
+  text-decoration: none;
+  color: #595959;
+}
+
+a:focus {
+  outline: none;
+}
+
+.loggedin {
+  float: left;
+  width: 175px;
+  padding-top: 4px;
+  font-size: 12px;
+  line-height: 18px;
+  font-style: italic;
+  color: #595959;
 }
 
 .logo {

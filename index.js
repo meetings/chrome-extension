@@ -1,4 +1,5 @@
 var BASE_URL = 'https://dev.meetin.gs/meetings/create/?';
+var BUTTON_TEMPLATE = '<a href="{{0}}" target="_blank" class="meetings-button"><img src="images/chrome_button_m.png"> <span>Schedule meeting</span></a>';
 
 function fill(string, args) {
   return string.replace(/\{\{([^\}]+)\}\}/g, function (match, key) {
@@ -37,8 +38,6 @@ function parametrize(params) {
     initial_participants:participants
   };
 
-
-  $(r.selector).append($(fill('<a href="{{0}}" target="_blank" class="meetings-button">Schedule Meeting</a>', [BASE_URL + parametrize(params)])).attr("style", r.style || ""));
-
+  $(r.selector).append($(fill(BUTTON_TEMPLATE, [BASE_URL + parametrize(params)])).attr("style", r.style || ""));
 });
 
