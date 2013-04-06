@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
-<html ng-csp="">
+<html>
 <head>
   <meta charset="utf-8">
   <title>Meetin.gs</title>
-  <link rel="stylesheet" type="text/css" href="default.css">
+  <link rel="stylesheet" type="text/css" href="popup.css">
   <script src="jquery.js"></script>
+  <script src="base.js"></script>
   <script src="popup.js"></script>
 </head>
 <body class="popup">
@@ -16,40 +17,48 @@
     <img src="images/profile.png"/>
     <div class="loggedin">Logged in as<br/><span id="email"></span></div>
   </div>
+  <hr class="thick"/>
   <div>
     <img src="images/meetings.png"/>
-    <a href="https://dev.meetin.gs/meetings_global/detect/" target="_blank">My Meetings</a>
+    <a href="/meetings_global/detect/" target="_blank">My Meetings</a>
   </div>
+  <hr>
   <div>
     <img src="images/organize.png"/>
-    <a href="https://dev.meetin.gs/meetings/create" target="_blank">Organize Meeting</a><br/>
+    <a href="/meetings/create" target="_blank">Organize Meeting</a><br/>
   </div>
+  <hr>
   <div>
     <img src="images/meetme.png"/>
-    <a href="#">My <b>meet me</b> page</a>
+    <a href="/meetings/my_meet_me/" target="_blank">My <b>meet me</b> page</a>
   </div>
+  <hr class="thick"/>
   <div>
     <img src="images/support.png"/>
     <a href="http://support.meetin.gs" target="_blank">Support</a><br/>
   </div>
+  <hr>
   <div>
     <img src="images/facebook.png"/>
-    <a href="#">Follow us on Facebook</a>
+    <a href="http://www.facebook.com/pages/Meetings/182909251746386" target="_blank">Follow us on Facebook</a>
   </div>
+  <hr>
   <div>
     <img src="images/twitter.png"/>
-    <a href="#">Follow us on Twitter</a>
+    <a href="http://twitter.com/meetin_gs/" target="_blank">Follow us on Twitter</a>
   </div>
+  <hr>
   <div>
     <img src="images/logout.png"/>
-    <a href="https://dev.meetin.gs/xlogout/" target="_blank">Log Out</a><br/>
+    <a href="/xlogout/" target="_blank">Log Out</a><br/>
   </div>
 </div>
-<div id="menu-loggedout" class="menu" style="/*display: none*/">
+<div id="menu-loggedout" class="menu" style="display: none">
   <div>
-    <img src="images/organize.png"/>
-    <a href="https://dev.meetin.gs/meetings/login" target="_blank">Log in</a><br/>
+    <img src="images/meetme.png"/>
+    <a href="/meetings/login" target="_blank">Log in</a><br/>
   </div>
+  <hr>
   <div>
     <img src="images/support.png"/>
     <a href="http://support.meetin.gs" target="_blank">Support</a>

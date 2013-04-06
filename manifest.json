@@ -10,19 +10,23 @@
   },
   "browser_action":{
     "default_icon":"icon.png",
-    "default_popup": "popup.html"
+    "default_popup":"popup.html"
   },
   "content_security_policy":"script-src 'self'; object-src 'self'",
-  "content_scripts": [
+  "content_scripts":[
     {
-      "matches": ["*://*/*"],
-      "css": ["default.css"],
-      "js": ["jquery.js", "config.js", "index.js"],
-      "run_at": "document_end"
+      "matches":[
+        "*://www.linkedin.com/profile/view*",
+        "*://*.highrisehq.com/people/*",
+        "*://mail.google.com/mail/u/*",
+        "*://www.google.com/calendar/*"
+      ],
+      "js":["jquery.js", "integrations.js", "base.js", "index.js"],
+      "run_at":"document_end"
     }
   ],
+  "web_accessible_resources":["images/button.png", "manifest.json"],
   "permissions":[
-    "http://*/",
-    "https://*/"
+    "https://dev.meetin.gs/*"
   ]
 }

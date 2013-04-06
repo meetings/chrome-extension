@@ -1,5 +1,5 @@
-var BASE_URL = 'https://dev.meetin.gs/meetings/create/?';
-var BUTTON_TEMPLATE = '<a href="{{0}}" target="_blank" class="meetings-button"><img src="images/chrome_button_m.png"> <span>Schedule meeting</span></a>';
+var CREATE_URL = MEETINGS_BASE + '/meetings/create/?';
+var BUTTON_TEMPLATE = '<a href="{{0}}" target="_blank" class="meetings-button"><img style="vertical-align: bottom" src="' + chrome.extension.getURL('images/button.png') +  '"></a>';
 
 function fill(string, args) {
   return string.replace(/\{\{([^\}]+)\}\}/g, function (match, key) {
@@ -24,7 +24,6 @@ function parametrize(params) {
     }
   }
 })(function (r) {
-  console.log(r);
   var participants = r.contacts.map(function (contact) {
       return fill('"{{0}}" <{{1}}>', [contact.name, contact.email]);
     }).join(', ');
@@ -32,12 +31,11 @@ function parametrize(params) {
   var params = {
     title:r.title,
     location:r.location,
-    //initial_agenda:undefined,
     begin_epoch:r.start ? Math.floor(r.start / 1000) : undefined,
     end_epoch:r.end ? Math.floor(r.end / 1000) :undefined,
     initial_participants:participants
   };
 
-  $(r.selector).append($(fill(BUTTON_TEMPLATE, [BASE_URL + parametrize(params)])).attr("style", r.style || ""));
+  $(r.selector)[r.place || 'append']($(fill(BUTTON_TEMPLATE, [CREATE_URL + parametrize(params)])).attr("style", r.style || ""));
 });
 

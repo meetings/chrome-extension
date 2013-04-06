@@ -1,0 +1,63 @@
+.popup {
+  width: 216px;
+  background-color: #f4f4f4;
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > div {
+  clear: left;
+  height: 40px;
+}
+
+.menu img {
+  float: left;
+  padding: 10px;
+}
+
+.menu a {
+  float: left;
+  width: 175px;
+  padding-top: 10px;
+  text-decoration: none;
+  color: #595959;
+}
+
+a:focus {
+  outline: none;
+}
+
+.loggedin {
+  float: left;
+  width: 175px;
+  padding-top: 4px;
+  font-size: 12px;
+  line-height: 18px;
+  font-style: italic;
+  color: #595959;
+}
+
+.logo {
+  width: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#90d0e9), to(#7bbed8));
+  text-align: center;
+  padding: 10px 20px 0 0;
+}
+
+hr {
+  border-top: 1px solid #c7c7c7;
+  border-bottom: 1px solid #fdfdfd;
+  border-left: none;
+  border-right: none;
+}
+
+hr.thick {
+  height: 7px;
+  background-image: url('images/hr.png');
+  background-repeat: repeat-x;
+  border: none;
+}

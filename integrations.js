@@ -8,7 +8,7 @@ var INTEGRATIONS = {
         }
       ],
       selector:'div.profile-card',
-      style:'margin-top: 0'
+      style:'margin: 0 8px 8px 14px; display: inline-block'
     });
   },
   "*://*.highrisehq.com/people/*":function (callback) {
@@ -43,7 +43,9 @@ var INTEGRATIONS = {
         callback({
           contacts:contacts,
           title: title,
-          selector:'div.iH'
+          selector:'div.adF',
+          place: 'prepend',
+          style: 'margin-right: 16px; vertical-align: bottom'
         });
       }
     });
@@ -70,7 +72,9 @@ var INTEGRATIONS = {
             contacts: contacts,
             start: new Date(start).getTime(),
             end: new Date(end).getTime(),
-            selector:'div.ep-ea-print-btn'
+            selector:'div.ep-ea-print-btn',
+            style: 'margin-right: 8px',
+            place: 'prepend'
           });
         }, 500);
       }
