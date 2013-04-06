@@ -21,14 +21,19 @@
         "*://mail.google.com/mail/u/*",
         "*://www.google.com/calendar/*"
       ],
-      "js":["jquery.js", "integrations.js", "base.js", "index.js"],
+      "js":["jquery.js", "base.js", "integrations.js","index.js"],
       "run_at":"document_end"
     }
   ],
   "background": {
     "scripts": ["background.js"]
   },
-  "web_accessible_resources":["images/button.png", "manifest.json"],
+  "web_accessible_resources":[
+    "images/button.png",
+    "images/button-linkedin.png",
+    "images/button-calendar.png",
+    "manifest.json"
+  ],
   "permissions":[
     "https://dev.meetin.gs/*"
   ]

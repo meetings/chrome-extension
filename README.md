@@ -13,6 +13,10 @@ To test that the extension works as expected:
 - click the Meetin.gs icon that has appeared to the right of the search/URL input box - you should see a dropdown which will show different links depending on whether you're logged in or not
 - navigate to a Highrise contact - you should see a "Schedule Meeting" button that you can click
 
-## Publishing
+## Distribution
 
 Use the "Pack extension..." option on the same page as when installing above, together with the private key.
+
+## Store Submission
+
+To submit an updated version of the extension to the store, zip up the contents of the `meetings-extension` directory and upload it via the [Chrome Developer Dashboard](https://chrome.google.com/webstore/developer/dashboard).

@@ -1,5 +1,5 @@
 var CREATE_URL = MEETINGS_BASE + '/meetings/create/?';
-var BUTTON_TEMPLATE = '<a href="{{0}}" target="_blank" class="meetings-button"><img style="vertical-align: bottom" src="' + chrome.extension.getURL('images/button.png') +  '"></a>';
+var BUTTON_TEMPLATE = '<a href="{{0}}" target="_blank" class="meetings-button"><img style="vertical-align: bottom" src="' + chrome.extension.getURL('images/button{{1}}.png') + '"></a>';
 
 function fill(string, args) {
   return string.replace(/\{\{([^\}]+)\}\}/g, function (match, key) {
@@ -25,17 +25,20 @@ function parametrize(params) {
   }
 })(function (r) {
   var participants = r.contacts.map(function (contact) {
-      return fill('"{{0}}" <{{1}}>', [contact.name, contact.email]);
-    }).join(', ');
+    return fill('"{{0}}" <{{1}}>', [contact.name, contact.email]);
+  }).join(', ');
 
   var params = {
     title:r.title,
     location:r.location,
     begin_epoch:r.start ? Math.floor(r.start / 1000) : undefined,
-    end_epoch:r.end ? Math.floor(r.end / 1000) :undefined,
+    end_epoch:r.end ? Math.floor(r.end / 1000) : undefined,
     initial_participants:participants
   };
 
-  $(r.selector)[r.place || 'append']($(fill(BUTTON_TEMPLATE, [CREATE_URL + parametrize(params)])).attr("style", r.style || ""));
+  $(r.selector)[r.place || 'append']($(
+    fill(BUTTON_TEMPLATE,
+      [CREATE_URL + parametrize(params), r.button ? '-' + r.button : '']
+    )).attr("style", r.style || ""));
 });
 
