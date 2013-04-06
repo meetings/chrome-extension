@@ -25,6 +25,9 @@
       "run_at":"document_end"
     }
   ],
+  "background": {
+    "scripts": ["background.js"]
+  },
   "web_accessible_resources":["images/button.png", "manifest.json"],
   "permissions":[
     "https://dev.meetin.gs/*"
