@@ -1,3 +1,5 @@
+var INTEGRATIONS_URL = '//localhost:8000/integrations.js';
+
 function get(url) {
   try {
     var xhr = new XMLHttpRequest();
@@ -16,7 +18,7 @@ var MEETINGS_BASE = (function getBase() {
   return permission.substr(0, permission.length - 2);
 })();
 
-eval(get('//localhost:8000/integrations.js') || get(chrome.extension.getURL('integrations.js')))
+eval(get(INTEGRATIONS_URL) || get(chrome.extension.getURL('integrations.js')))
 
 
 

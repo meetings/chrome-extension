@@ -19,4 +19,6 @@ Use the "Pack extension..." option on the same page as when installing above, to
 
 ## Store Submission
 
+First, make sure that `permissions` URL in `manifest.json` and `INTEGRATIONS_URL` in `base.js` point to the production server.
+
 To submit an updated version of the extension to the store, zip up the contents of the `meetings-extension` directory and upload it via the [Chrome Developer Dashboard](https://chrome.google.com/webstore/developer/dashboard).
