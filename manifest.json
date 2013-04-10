@@ -21,7 +21,7 @@
         "*://mail.google.com/mail/u/*",
         "*://www.google.com/calendar/*"
       ],
-      "js":["jquery.js", "base.js", "integrations.js","index.js"],
+      "js":["jquery.js", "base.js", "index.js"],
       "run_at":"document_end"
     }
   ],
@@ -32,6 +32,7 @@
     "images/button.png",
     "images/button-linkedin.png",
     "images/button-calendar.png",
+    "integrations.js",
     "manifest.json"
   ],
   "permissions":[

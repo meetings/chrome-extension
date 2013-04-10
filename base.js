@@ -1,8 +1,22 @@
+function get(url) {
+  try {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.send(null);
+    return xhr.responseText;
+  } catch(e) {
+
+  }
+}
+
+// extract the base URL from manifest
 var MEETINGS_BASE = (function getBase() {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', chrome.extension.getURL('manifest.json'), false);
-  xhr.send(null);
-  var manifest = JSON.parse(xhr.responseText);
+  var manifest = JSON.parse(get(chrome.extension.getURL('manifest.json')));
   var permission = manifest.permissions[0];
   return permission.substr(0, permission.length - 2);
 })();
+
+eval(get('//localhost:8000/integrations.js') || get(chrome.extension.getURL('integrations.js')))
+
+
+
