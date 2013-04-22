@@ -31,9 +31,11 @@ var INTEGRATIONS = {
       if (r.length && $(e.target).attr('class').trim() == 'aeH') {
         var contacts = [];
         ['.gD', '.g2'].forEach(function (selector) {
-          contacts.push({
-            name:$(selector).attr('name'),
-            email:$(selector).attr('email')
+          $(selector).each(function(index) {
+            contacts.push({
+              name:$(this).attr('name'),
+              email:$(this).attr('email')
+            });
           });
         });
         var title = $('.hP').text();
