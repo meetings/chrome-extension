@@ -1,11 +1,13 @@
-var INTEGRATIONS_URL = '//localhost:8000/integrations.js';
+var INTEGRATIONS_URL = 'http://versions.meetin.gs/chrome/integrations.js';
 
 function get(url) {
   try {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, false);
     xhr.send(null);
-    return xhr.responseText;
+    if(xhr.status == 200) {
+      return xhr.responseText;
+    }
   } catch(e) {
 
   }
