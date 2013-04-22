@@ -1,5 +1,5 @@
   var CREATE_URL = MEETINGS_BASE + '/meetings/create/?';
-  var BUTTON_TEMPLATE = '<a href="{{0}}" target="_blank" class="meetings-button"><img style="vertical-align: bottom" src="' + chrome.extension.getURL('images/button{{1}}.png') + '"></a>';
+  var BUTTON_TEMPLATE = '<a href="{{0}}" target="_blank" id="meetings-button"><img style="vertical-align: bottom" src="' + chrome.extension.getURL('images/button{{1}}.png') + '"></a>';
 
   function fill(string, args) {
     return string.replace(/\{\{([^\}]+)\}\}/g, function (match, key) {
@@ -36,10 +36,13 @@
       initial_participants:participants
     };
 
-    $(r.selector)[r.place || 'append']($(
-      fill(BUTTON_TEMPLATE,
-        [CREATE_URL + parametrize(params), r.button ? '-' + r.button : '']
-      )).attr("style", r.style || ""));
+    if(!$('#meetings-button').length) {
+      $(r.selector)[r.place || 'append']($(
+        fill(BUTTON_TEMPLATE,
+          [CREATE_URL + parametrize(params), r.button ? '-' + r.button : '']
+        )).attr("style", r.style || ""));
+    }
+
   });
 
 

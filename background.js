@@ -1,6 +1,6 @@
 function onInstall() {
   chrome.tabs.create({
-    url:  "http://chrome.meetin.gs/"
+    url:  "http://chrome.meetin.gs/#tutorial"
   });
 }
 
