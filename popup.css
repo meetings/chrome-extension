@@ -27,6 +27,10 @@
   color: #595959;
 }
 
+.menu div:hover {
+  background-image: url('images/arrow.png');
+}
+
 a:focus {
   outline: none;
 }
@@ -53,6 +57,7 @@ hr {
   border-bottom: 1px solid #fdfdfd;
   border-left: none;
   border-right: none;
+  margin: 0;
 }
 
 hr.thick {
