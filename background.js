@@ -1,11 +1,12 @@
 function onInstall() {
+  localStorage['installed'] = new Date().getTime();
   chrome.tabs.create({
     url:  "http://chrome.meetin.gs/#tutorial"
   });
 }
 
 function onUpdate() {
-
+  localStorage['installed'] = localStorage['installed'] || new Date().getTime();
 }
 
 function getVersion() {
@@ -14,7 +15,7 @@ function getVersion() {
 }
 
 var currVersion = getVersion();
-var prevVersion = localStorage['version']
+var prevVersion = localStorage['version'];
 if (currVersion != prevVersion) {
   if (typeof prevVersion == 'undefined') {
     onInstall();
@@ -23,3 +24,10 @@ if (currVersion != prevVersion) {
   }
   localStorage['version'] = currVersion;
 }
+
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+  if (request.method == "getVersion")
+    sendResponse({version: localStorage['version'], installed: localStorage['installed']});
+  else
+    sendResponse({});
+});
