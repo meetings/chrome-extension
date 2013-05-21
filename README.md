@@ -2,9 +2,9 @@
 
 ## Setup
 
-`git clone git@github.com:olegp/meetings-extension.git`
+`git clone git@github.com:meetings/chrome-extension.git`
 
-Then open [chrome://extensions](chrome://extensions), click "Load unpacked extension..." and navigate to the `meetings-extension` directory you just cloned.
+Then open [chrome://extensions](chrome://extensions), click "Load unpacked extension..." and navigate to the `chrome-extension` directory you just cloned.
 
 ## Testing
 
