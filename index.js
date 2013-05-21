@@ -24,10 +24,6 @@
       }
     }
   })(function (r) {
-    chrome.extension.sendRequest({method: "getVersion"}, function(response) {
-      console.log(response);
-    });
-
     var participants = r.contacts.map(function (contact) {
       return fill('"{{0}}" <{{1}}>', [contact.name, contact.email]);
     }).join(', ');

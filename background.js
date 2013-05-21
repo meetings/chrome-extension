@@ -26,8 +26,11 @@ if (currVersion != prevVersion) {
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-  if (request.method == "getVersion")
-    sendResponse({version: localStorage['version'], installed: localStorage['installed']});
-  else
+  if (request.method == "getInfo")
+    sendResponse({version: localStorage['version'], installed: localStorage['installed'], rated: localStorage['rated']});
+  else if(request.method == "setRated") {
+    localStorage['rated'] = true;
+    sendResponse({});
+  } else
     sendResponse({});
 });
