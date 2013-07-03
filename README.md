@@ -23,4 +23,4 @@ First, make sure that `permissions` URL in `manifest.json` and `INTEGRATIONS_URL
 
 Then, incremenet the [version number](https://github.com/meetings/chrome-extension/blob/master/manifest.json#L3) in `manifest.json`.
 
-To submit an updated version of the extension to the store, zip up the contents of the `chrome-extension` directory and upload it via the [Chrome Developer Dashboard](https://chrome.google.com/webstore/developer/dashboard).
+To submit an updated version of the extension to the store, zip up the contents of the `chrome-extension` directory and upload it via the [Chrome Developer Dashboard](https://chrome.google.com/webstore/developer/dashboard). Make sure you click the "Publish Changes" button at the bottom of the page to actually publish the updated version.
