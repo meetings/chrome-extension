@@ -51,6 +51,23 @@ var INTEGRATIONS = {
           style:'margin-right: 16px; vertical-align: bottom'
         });
       }
+      
+     var r = e.target.querySelectorAll ? e.target.querySelectorAll('table.IZ') : {length:0};
+     if(r.length && ((e.target.className == 'nH' && $(e.target).attr('role')) || e.target.className == 'aaZ' || e.target.className == 'ip adB')) {
+	var parent = $('.aDh').last();
+	  parent.css('height', '84px').append( '<a href="#" style="margin-left: 6px"><img src="' + chrome.extension.getURL('images/button-meetme.png') + '"/></a>').click(function() {
+
+  $.getJSON('https://meetin.gs/meetings_json/meet_me_urls', function(data) {
+    if(data.result && data.result[0]) {
+        parent.closest('.nH').find('.editable').append(data.result[0] + '<br/>');
+    } else {
+	window.open('https://meetin.gs/meetings/my_meet_me/');	
+    }
+  });
+
+});
+
+     }	
     });
   },
   "*://www.google.com/calendar/*":function (callback) {
