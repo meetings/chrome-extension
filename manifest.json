@@ -1,6 +1,6 @@
 {
   "name":"Meetin.gs",
-  "version":"1.2",
+  "version":"1.3",
   "manifest_version":2,
   "description":"Meetin.gs is a cloud-based meeting organizer for running awesome business meetings.",
   "icons":{
@@ -19,7 +19,10 @@
         "*://www.linkedin.com/profile/view*",
         "*://*.highrisehq.com/people/*",
         "*://mail.google.com/mail/u/*",
-        "*://www.google.com/calendar/*"
+        "*://www.google.com/calendar/*",
+        "*://*.salesforce.com/*",
+        "*://outlook.office365.com/owa/*",
+        "*://www.facebook.com/messages/*"
       ],
       "js":["jquery.js", "base.js", "index.js"],
       "run_at":"document_end"
