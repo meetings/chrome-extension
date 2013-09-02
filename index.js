@@ -24,6 +24,7 @@
       }
     }
   })(function (r) {
+
     var participants = r.contacts.map(function (contact) {
       return fill('"{{0}}" <{{1}}>', [contact.name, contact.email]);
     }).join(', ');

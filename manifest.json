@@ -21,7 +21,7 @@
         "*://mail.google.com/mail/u/*",
         "*://www.google.com/calendar/*",
         "*://*.salesforce.com/*",
-        "*://outlook.office365.com/owa/*",
+        "*://*.com/owa/*",
         "*://www.facebook.com/messages/*"
       ],
       "js":["jquery.js", "base.js", "index.js"],

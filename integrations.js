@@ -56,7 +56,7 @@ var INTEGRATIONS = {
       if (r.length && ((e.target.className == 'nH' && $(e.target).attr('role')) || e.target.className == 'aaZ' || e.target.className == 'ip adB')) {
         if (!$('#meetings-meetme').length) {
           var parent = $('.aDh').last();
-          parent.css('height', '84px').append('<a id="meetings-meetme" href="#" style="margin-left: 6px"><img src="' + chrome.extension.getURL('images/button-meetme.png') + '"/></a>').click(function () {
+          parent.css('height', '84px').append('<a id="meetings-meetme" href="#" style="margin-left: 6px"><img src="' + chrome.extension.getURL('images/button-meetme.png') + '"/></a>').find('#meetings-meetme').click(function () {
             $.getJSON('https://meetin.gs/meetings_json/meet_me_urls', function (data) {
               if (data.result && data.result[0]) {
                 parent.closest('.nH').find('.editable').append(data.result[0] + '<br/>');
@@ -126,13 +126,12 @@ var INTEGRATIONS = {
       });
     }
   },
-  "*://outlook.office365.com/owa/*": function (callback) {
+  "*://*.com/owa/*": function (callback) {
     document.body.addEventListener('DOMSubtreeModified', function (e) {
-
-      var r = e.target.querySelectorAll ? e.target.querySelectorAll('.allowTextSelection._f_ny') : {length: 0};
+      var r = e.target.querySelectorAll ? e.target.querySelectorAll('.allowTextSelection._f_ny,.allowTextSelection._f_Hy') : {length: 0};
       if (r.length && $(e.target).attr('class') == 'conductorContent') {
         setTimeout(function () {
-          var contacts = $('.allowTextSelection._f_ny').text().split(';').map(function (contact) {
+          var contacts = $('.allowTextSelection._f_ny,.allowTextSelection._f_Hy').text().split(';').map(function (contact) {
             var i = contact.indexOf('<');
             if (i != -1) {
               return {name: contact.substr(0, i).trim(), email: contact.substr(i + 1).replace('>', '').trim()};
@@ -143,15 +142,18 @@ var INTEGRATIONS = {
 
           callback({
             contacts: contacts,
-            selector: 'div._f_wj',
+            selector: 'div._f_wj,._f_Nj',
             style: 'margin-left: 10px'
           });
         }, 1000);
 
-         $('div._f_wj').append( '<a href="#"><img src="' + chrome.extension.getURL('images/button-meetme.png') + '" style="vertical-align: bottom" /></a>').click(function() {
+         $('div._f_wj,._f_Nj').append( '<a href="#" id="meetings-meetme"><img src="' + chrome.extension.getURL('images/button-meetme.png') + '" style="vertical-align: bottom" /></a>').find('#meetings-meetme').click(function() {
            $.getJSON('https://meetin.gs/meetings_json/meet_me_urls', function(data) {
              if(data.result && data.result[0]) {
                $('textarea').val(data.result[0] + '\n' + $('textarea').val());
+               var doc = $('#EditorBody')[0].contentWindow.document;
+               var $body = $('body', doc);
+               $body.html('<a href="' + data.result[0] + '">' + data.result[0] + '</a><br/>' + $body.html());
              } else {
                window.open('https://meetin.gs/meetings/my_meet_me/');
              }
@@ -169,7 +171,7 @@ var INTEGRATIONS = {
       }
 
       r = e.target.querySelectorAll ? e.target.querySelectorAll('._f_V3') : {length: 0};
-      if (r.length && $(e.target).attr('class') == 'fadeIn') {
+      if (r.length && $(e.target).attr('class') == 'fadeIn' /*|| $(e.target).attr('class') == '_f_V3 _f_W3')*/) {
         var contacts = $('._f_f3').text().split(';').map(function (contact) {
           contact = contact.trim();
           if (contact) {
@@ -178,7 +180,7 @@ var INTEGRATIONS = {
         }).filter(function (contact) {
             return contact;
           });
-        var start = $('._f_Fc').text() + ' ' + $('._f_oe').find('input').attr('aria-label').substr("start time ".length);
+        var start = $($('._f_Fc,.f_Ec')[0]).text() + ' ' + $('._f_oe').attr('aria-label').substr("start time ".length);  // was: .find('input').attr() ...
         callback({
           title: $("input[autoid='_f_v']").val(),
           location: $("input[autoid='_f_V1']").val(),
@@ -213,4 +215,18 @@ var INTEGRATIONS = {
       }
     });
   }
+  /*
+  ,"*://*.mail.live.com/*": function(callback) {
+    document.body.addEventListener('DOMSubtreeModified', function (e) {
+      var r = e.target.querySelectorAll ? e.target.querySelectorAll('.Attachments') : {length: 0};
+      if (r.length && $(e.target).attr('id') == 'ComposeContentWrapper') {
+        console.log(e.target);
+
+      }
+    });
+  },
+  "*://*.calendar.live.com/calendar/*": function(callback) {
+
+  }
+  */
 };
