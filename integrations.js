@@ -56,10 +56,25 @@ var INTEGRATIONS = {
       if (r.length && ((e.target.className == 'nH' && $(e.target).attr('role')) || e.target.className == 'aaZ' || e.target.className == 'ip adB')) {
         if (!$('#meetings-meetme').length) {
           var parent = $('.aDh').last();
-          parent.css('height', '84px').append('<a id="meetings-meetme" href="#" style="margin-left: 6px"><img src="' + chrome.extension.getURL('images/button-meetme.png') + '"/></a>').find('#meetings-meetme').click(function () {
-            $.getJSON('https://meetin.gs/meetings_json/meet_me_urls', function (data) {
+          parent.css('height', '84px').append('<div id="meetings-meetme-container"><a id="meetings-meetme" href="#" style="margin-left: 6px"><img src="' + chrome.extension.getURL('images/button-meetme.png') + '"/></a></div>').find('#meetings-meetme').click(function () {
+            if ( $('#meetings-meetme-container-popup').length ) {
+              // TODO replace this with a document wide handler that closes the dialog if something else is clicked
+              $('#meetings-meetme-popup').remove();
+              return;
+            }
+            // TODO replace button with a spinner button
+            $.getJSON('https://meetin.gs/meetings_json/meet_me_pages', function (data) {
+              // TODO replace button the original button
               if (data.result && data.result[0]) {
-                parent.closest('.nH').find('.editable').append(data.result[0] + '<br/>');
+                $('#meetings-meetme-container').append('<ul id="meetings-meetme-popup" class="dropdown-menu" role="menu"></ul>');
+                data.result.forEach( function( page ) {
+                  var action = $('<a href="#"></a>').text( page.name ).click( function( e ) {
+                    e.prevetDefault();
+                    parent.closest('.nH').find('.editable').append( page.url + '<br/>' );
+                    $('#meetings-meetme-popup').remove();
+                  } );
+                  $('#meetings-meetme-popup').append( $('<li></li>').append( action ) );
+                } );
               } else {
                 window.open('https://meetin.gs/meetings/my_meet_me/');
               }
