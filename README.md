@@ -19,7 +19,7 @@ Use the "Pack extension..." option on the same page as when installing above, to
 
 ## Store Submission
 
-First, make sure that `permissions` URL in `manifest.json` and `INTEGRATIONS_URL` in `base.js` point to the production server.
+First, make sure that `permissions` URL in `manifest.json` to point to the production server.
 
 Then, incremenet the [version number](https://github.com/meetings/chrome-extension/blob/master/manifest.json#L3) in `manifest.json`.
 
