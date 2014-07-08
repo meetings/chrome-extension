@@ -25,6 +25,7 @@
 	"*://*.outlook.com/owa/*",
         "*://www.facebook.com/messages/*"
       ],
+      "css":["button.css"],
       "js":["jquery.js", "base.js", "index.js"],
       "run_at":"document_end"
     },
