@@ -9,8 +9,13 @@
   <script src="popup.js"></script>
 </head>
 <body class="popup">
-<div class="logo">
+<div id="logo-main" class="logo">
   <img src="images/logo.png"/>
+</div>
+<div id="logo-submenu" class="logo" style="display: none">
+  <a id="back-link" href="#">
+    <img src="images/logo-arrow.png"/>
+  </a>
 </div>
 <div id="menu-loggedin" class="menu" style="display: none">
   <div>
@@ -18,71 +23,112 @@
     <div class="loggedin">Logged in as<br/><span id="email"></span></div>
   </div>
   <hr class="thick"/>
-  <div>
+  <div class="arrow">
     <img src="images/meetings.png"/>
     <a href="/meetings_global/detect/" target="_blank">Meeting Timeline</a>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/organize.png"/>
     <a href="/meetings/create" target="_blank">Organize Meeting</a><br/>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/meetme.png"/>
     <a href="/meetings/my_meet_me/" target="_blank">My <b>Meet Me</b> Page</a>
   </div>
+  <div class="arrow">
+    <img src="images/settings.png"/>
+    <a href="#" id="link-settings">Settings</a>
+  </div>
   <hr class="thick"/>
-  <div>
+  <div class="arrow">
     <img src="images/tutorial.png"/>
     <a href="http://chrome.meetin.gs/#tutorial" target="_blank">Tutorial</a><br/>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/support.png"/>
     <a href="http://support.meetin.gs" target="_blank">Support</a><br/>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/facebook.png"/>
     <a href="http://www.facebook.com/pages/Meetings/182909251746386" target="_blank">Like Us on Facebook</a>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/twitter.png"/>
     <a href="http://twitter.com/meetin_gs/" target="_blank">Follow Us on Twitter</a>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/logout.png"/>
     <a href="/xlogout/" target="_blank">Log Out</a><br/>
   </div>
 </div>
 <div id="menu-loggedout" class="menu" style="display: none">
-  <div>
+  <div class="arrow">
     <img src="images/meetme.png"/>
     <a href="/meetings/login" target="_blank">Log in</a><br/>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/tutorial.png"/>
     <a href="http://chrome.meetin.gs/#tutorial" target="_blank">Tutorial</a><br/>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/support.png"/>
     <a href="http://support.meetin.gs" target="_blank">Support</a>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/facebook.png"/>
     <a href="http://www.facebook.com/pages/Meetings/182909251746386" target="_blank">Like Us on Facebook</a>
   </div>
   <hr>
-  <div>
+  <div class="arrow">
     <img src="images/twitter.png"/>
     <a href="http://twitter.com/meetin_gs/" target="_blank">Follow Us on Twitter</a>
   </div>
+</div>
+<div id="menu-settings" class="menu" style="display: none">
+    <div class="arrow">
+        <img src="images/settings.png"/>
+        <a href="http://support.meetin.gs" target="_blank">Settings</a>
+    </div>
+    <hr>
+    <div class="help">Toggle the button on a per service basis below:</div>
+    <hr>
+    <div>
+        <input id="gmail" type="checkbox"/>
+        <span>GMail</span>
+    </div>
+    <div>
+        <input id="google-calendar" type="checkbox"/>
+        <span>Google Calendar</span>
+    </div>
+    <div>
+        <input id="linkedin" type="checkbox"/>
+        <span>LinkedIn</span>
+    </div>
+    <div>
+        <input id="facebook" type="checkbox"/>
+        <span>Facebook</span>
+    </div>
+    <div>
+        <input id="outlook" type="checkbox"/>
+        <span>Outlook</span>
+    </div>
+    <div>
+        <input id="salesforce" type="checkbox"/>
+        <span>Salesforce</span>
+    </div>
+    <div>
+        <input id="highrise" type="checkbox"/>
+        <span>Highrise</span>
+    </div>
 </div>
 </body>
 </html>
