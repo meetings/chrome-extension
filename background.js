@@ -34,3 +34,10 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
   } else
     sendResponse({});
 });
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.method == "getDisabled")
+        sendResponse({disabled: localStorage.disabled ? JSON.parse(localStorage.disabled) : {}});
+    else
+        sendResponse({});
+});

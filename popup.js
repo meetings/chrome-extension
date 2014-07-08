@@ -1,12 +1,18 @@
 var LOGIN_URL = MEETINGS_BASE + "/meetings_raw/logged_in_user_email";
 var NAME_INTEGRATIONS = {
-    "gmail": "*://www.linkedin.com/profile/view*"
+  "gmail": "*://www.linkedin.com/profile/view*",
+  "google-calendar": "*://www.google.com/calendar/*",
+  "linkedin":"*://www.linkedin.com/profile/view*",
+  "outlook":"*://*.com/owa/*",
+  "facebook":"*://www.facebook.com/messages/*",
+  "salesforce":"*://*.salesforce.com/*",
+  "highrise":"*://*.highrisehq.com/people/*"
 };
 
 $(function () {
   var disabled = localStorage.disabled ? JSON.parse(localStorage.disabled) : {};
   for(var key in NAME_INTEGRATIONS) {
-    $('#' + key).prop('checked', disabled);
+    $('#' + key).prop('checked', !disabled[key]);
   }
   $('a').attr('href', function () {
     return this.href.indexOf('http') ? MEETINGS_BASE +
